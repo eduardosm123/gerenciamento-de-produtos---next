@@ -7,6 +7,7 @@ const theme = createTheme({
     primary: blue,
     secondary: cyan,
     success: green,
+    
   },
 });
 

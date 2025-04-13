@@ -1,8 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { categorySlice } from "./categorySlice";
+import { listCategorySlice } from "./ListCategorySlice";
+import { fetchSlice } from "./fetchSlice";
 export const store = configureStore({
   reducer: {
     category: categorySlice.reducer,
+    listCategories: listCategorySlice.reducer,
+    fetch: fetchSlice.reducer
   },
 });
 

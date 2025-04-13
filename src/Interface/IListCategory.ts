@@ -1,5 +1,7 @@
+import { CategoryItemList } from "@/Types/Categories";
+
 export interface IListCategory {
-  rows?: [id: number, name: string, access_key_id?: string] | [];
+  rows?: CategoryItemList[];
   offset: number,
   total: number
 }

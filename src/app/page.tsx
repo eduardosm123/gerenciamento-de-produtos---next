@@ -1,11 +1,16 @@
-import { NavbarComponent } from "./components/NavbarComponent";
-
+'use client'
+ 
+import { NavbarComponent } from "../components/NavbarComponent";
+import TableComponentCategory from "@/components/TableComponentCategory";
 
 export default function Home() {
+
+ 
   return (
      <NavbarComponent>
-        <div>
-          <h1>Star</h1>
+         
+        <div className="pt-[10%] flex justify-center">
+          <TableComponentCategory></TableComponentCategory>
         </div>
      </NavbarComponent>
   );

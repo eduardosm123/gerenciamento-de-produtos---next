@@ -1,12 +1,12 @@
-import { Navbar } from "./components/navbar";
+import { NavbarComponent } from "./components/NavbarComponent";
 
 
 export default function Home() {
   return (
-     <Navbar>
+     <NavbarComponent>
         <div>
           <h1>Star</h1>
         </div>
-     </Navbar>
+     </NavbarComponent>
   );
 }

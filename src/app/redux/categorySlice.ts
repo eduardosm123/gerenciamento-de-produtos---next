@@ -1,0 +1,16 @@
+import { createSlice} from "@reduxjs/toolkit"
+
+
+export const categorySlice = createSlice({
+    name: 'category',
+    initialState: {
+       name: ''
+    },
+    reducers: {
+        setCategory: (state, { payload }) => {
+            state.name = payload
+        },
+    }
+})
+
+export const { setCategory } = categorySlice.actions;

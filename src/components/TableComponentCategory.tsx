@@ -24,7 +24,7 @@ export default function TableComponentCategory() {
         <ButtonComponent
           color="success"
           className="w-[17%]"
-          onClick={() => router.push("/register")}
+          onClick={() => router.push("/category/create")}
         >
           Cadastrar
         </ButtonComponent>
@@ -51,7 +51,7 @@ export default function TableComponentCategory() {
                   <TableCell align="center">{item.id}</TableCell>
                   <TableCell align="center">{item.name}</TableCell>
                   <TableCell align="center">
-                    <Button variant="contained" color="primary">
+                    <Button variant="contained" color="primary" onClick={() => router.push(`/category/update/${item.id}`)}>
                       editar
                     </Button>
                     <Button

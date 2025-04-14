@@ -10,7 +10,10 @@ export const categorySlice = createSlice({
         setCategory: (state, { payload }) => {
             state.name = payload
         },
+        clearCategory: (state)=> {
+            state.name = ''
+        }
     }
 })
 
-export const { setCategory } = categorySlice.actions;
+export const { setCategory, clearCategory } = categorySlice.actions;

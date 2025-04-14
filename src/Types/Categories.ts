@@ -3,3 +3,8 @@ export type CategoryItemList = {
   name: string;
   access_key_id?: number;
 };
+
+
+export type CategoryPost = {
+  name: string
+}

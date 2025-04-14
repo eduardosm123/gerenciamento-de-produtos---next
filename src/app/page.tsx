@@ -8,7 +8,6 @@ export default function Home() {
  
   return (
      <NavbarComponent>
-         
         <div className="pt-[10%] flex justify-center">
           <TableComponentCategory></TableComponentCategory>
         </div>

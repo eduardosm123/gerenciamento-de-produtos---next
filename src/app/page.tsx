@@ -1,14 +1,23 @@
 "use client";
 
+import { Grid } from "@mui/material";
 import { NavbarComponent } from "../components/NavbarComponent";
 import TableComponentCategory from "@/components/TableComponentCategory";
 
 export default function Home() {
   return (
     <NavbarComponent>
-      <div className="pt-[5%] flex justify-center z-1">
+      <Grid sx={{
+        paddingTop: {
+          xs: "15%",
+          sm: "5%"
+        },
+        justifyContent: "center",
+        display: "flex"
+      }}>
         <TableComponentCategory></TableComponentCategory>
-      </div>
+      </Grid>
+       
     </NavbarComponent>
   );
 }

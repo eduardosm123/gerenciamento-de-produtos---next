@@ -4,6 +4,7 @@ import { setPage } from "@/redux/ListCategorySlice";
 import { RootState } from "@/redux/store";
 import { Button } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
+import TextComponent from "./TextComponent";
 
 export default function PaginationCategoryComponent() {
   const totalPage = useSelector(
@@ -25,9 +26,9 @@ export default function PaginationCategoryComponent() {
   };
   return (
     <div className="flex justify-between mt-[2%]">
-      <Button variant="contained" onClick={(handlePreviousPage)}>Anterior</Button>
+      <Button variant="contained" onClick={(handlePreviousPage)}><TextComponent>Anterior</TextComponent></Button>
       <p>{page ? page : ""} de {totalPage ? totalPage : ""} </p>
-      <Button variant="contained" onClick={handleNextPage}>próximo</Button>
+      <Button variant="contained" onClick={handleNextPage}><TextComponent>Próximo</TextComponent></Button>
     </div>
   );
 }

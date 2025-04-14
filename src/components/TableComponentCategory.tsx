@@ -8,31 +8,29 @@ import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import {   useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
-import { ButtonComponent } from "./ButtonComponent";
 import { useRouter } from "next/navigation";
 import PaginationCategoryComponent from "./PaginationCategoryComponent";
 import { deleteCategory } from "@/api/categories";
- 
+import TextComponent from "./TextComponent";
 
 export default function TableComponentCategory() {
   const router = useRouter();
   const data = useSelector((state: RootState) => state.listCategories.rows);
 
-  useFetchCategories(); 
-
+  useFetchCategories();
 
   return (
     <div className="w-[80%] z-1">
       <div className="w-[100%] flex justify-end mb-[2%] z-1">
-        <ButtonComponent
-          color="success"
-          className="w-[17%] z-1"
-          onClick={() => router.push("/category/create")}
-        >
-          Cadastrar
-        </ButtonComponent>
+         
+        <Button color="success" variant="contained" sx={
+          {width: {
+            xs: "40%",
+            sm: "20%"
+          }}
+        } onClick={() => router.push("/category/create")}><TextComponent>Cadastrar</TextComponent></Button>
       </div>
       <TableContainer component={Paper}>
         <Table aria-label="simple table">
@@ -56,22 +54,45 @@ export default function TableComponentCategory() {
                   <TableCell align="center">{item.id}</TableCell>
                   <TableCell align="center">{item.name}</TableCell>
                   <TableCell align="center">
-                    <Button variant="contained" color="primary" onClick={() => router.push(`/category/update/${item.id}`)} disabled={item.access_key_id ? false : true}>
-                      editar
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      onClick={() => router.push(`/category/update/${item.id}`)}
+                      disabled={item.access_key_id ? false : true}
+                      sx={{
+                        marginLeft: {
+                          xs: "0%",
+                          sm: "10%"
+                        },
+                        width: {
+                          xs: "20%",
+                          sm: "30%"
+                        }
+                      }}
+                    >
+                       <TextComponent>Editar</TextComponent>
                     </Button>
                     <Button
+
                       variant="contained"
                       color="error"
                       sx={{
-                        marginLeft: "10%",
+                        marginLeft: {
+                          xs: "0%",
+                          sm: "10%"
+                        },
+                        width: {
+                          xs: "20%",
+                          sm: "30%"
+                        }
                       }}
                       disabled={item.access_key_id ? false : true}
-                      onClick={()=> {
-                        deleteCategory(item.id) 
+                      onClick={() => {
+                        deleteCategory(item.id);
                         window.location.reload();
                       }}
                     >
-                      excluir
+                     <TextComponent>Excluir</TextComponent>
                     </Button>
                   </TableCell>
                 </TableRow>
@@ -85,7 +106,7 @@ export default function TableComponentCategory() {
         </Table>
       </TableContainer>
       <div>
-      <PaginationCategoryComponent></PaginationCategoryComponent>
+        <PaginationCategoryComponent></PaginationCategoryComponent>
       </div>
     </div>
   );

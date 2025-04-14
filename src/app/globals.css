@@ -2,3 +2,6 @@
 
  
  
+@theme {
+    --breakpoint-sm: 320px; 
+}

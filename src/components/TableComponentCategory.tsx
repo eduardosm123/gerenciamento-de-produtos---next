@@ -17,7 +17,7 @@ import PaginationCategoryComponent from "./PaginationCategoryComponent";
 export default function TableComponentCategory() {
   const router = useRouter();
   const data = useSelector((state: RootState) => state.listCategories.rows);
-  useFetchCategories(0);
+  useFetchCategories();
 
   return (
     <div className="w-[80%] z-1">

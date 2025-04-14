@@ -1,9 +1,10 @@
 import { Typography } from "@mui/material";
 
 export default function TextComponent({
-  children,
+  children, color = "white"
 }: {
   children: React.ReactNode;
+  color?: string
 }) {
   return (
     <Typography
@@ -12,6 +13,7 @@ export default function TextComponent({
           xs: "0.7rem",
           sm: "1rem",
         },
+        color: color
       }}
     >
       {children}

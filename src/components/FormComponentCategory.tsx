@@ -9,10 +9,11 @@ import { clearCategory, setCategory } from "@/redux/categorySlice";
 import { FormEvent } from "react";
 import { postCategory } from "@/api/categories";
 import { setError } from "@/redux/fetchSlice";
-
+import { Grid} from "@mui/material";
+import TextComponent from "./TextComponent";
 export default function FormComponentCategory() {
   const data = useSelector((state: RootState) => state.category.name);
-  const error = useSelector((state: RootState)=> state.fetch.error)
+  const error = useSelector((state: RootState) => state.fetch.error);
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -26,51 +27,83 @@ export default function FormComponentCategory() {
         router.push("/");
       } catch (err) {
         console.log(err);
-        dispatch(setError("Erro: ocorreu um erro durante o cadastro da categoria"))
+        dispatch(
+          setError("Erro: ocorreu um erro durante o cadastro da categoria")
+        );
       }
     } else {
-      dispatch(setError("Erro: campo nome de categoria vazio"))
+      dispatch(setError("Erro: campo nome de categoria vazio"));
     }
   }
 
-
   return (
     <form className="flex flex-col w-[100%] items-center">
-      <section className="w-[100%] flex justify-center">
-        <TextField
+      <Grid sx={{
+        width: "100%",
+        display: "flex",
+        justifyContent: "center"
+      }}>
+         <TextField
           variant="standard"
           placeholder="Digite o nome da categoria"
           value={data}
           onChange={(e) => dispatch(setCategory(e.target.value))}
           required
           sx={{
-            width: "65%",
+            width: {
+              sm: "65%",
+              xs: "95%"
+            },
           }}
+          InputProps={{
+            sx: { fontSize: {
+              sm:  "1.1rem",
+              xs: "0.9rem"
+            } }
+          }}
+      
         />
-      </section>
-      <section className="flex w-[100%] justify-around pt-75">
-        <ButtonComponent
+      </Grid>
+      
+      <Grid sx={{
+         display: "flex",
+         width: "100%",
+         justifyContent: "space-around",
+         paddingTop: {
+          xs: "95%",
+          sm: "55%"
+         }
+      }}>
+         <ButtonComponent
           color="error"
           onClick={() => {
             dispatch(clearCategory());
             router.push("/");
           }}
-
-           
         >
-          voltar
+          <TextComponent>voltar</TextComponent>
         </ButtonComponent>
         <Button
           color="success"
           variant="contained"
           onClick={(e) => handleSubmit(e)}
         >
-          Cadastrar
+           <TextComponent>cadastrar</TextComponent>
         </Button>
-      </section>
-     {error ? <Alert severity="warning" onClose={()=> {
-      dispatch(setError(""))
-     }}>{error}</Alert>: <></>}
+      </Grid>
+      
+      {error ? (
+        <Alert
+          severity="warning"
+          onClose={() => {
+            dispatch(setError(""));
+          }}
+        >
+          {error}
+        </Alert>
+      ) : (
+        <></>
+      )}
     </form>
   );
 }

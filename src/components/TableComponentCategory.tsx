@@ -8,16 +8,20 @@ import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import { useSelector } from "react-redux";
+import {   useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import { ButtonComponent } from "./ButtonComponent";
 import { useRouter } from "next/navigation";
 import PaginationCategoryComponent from "./PaginationCategoryComponent";
+import { deleteCategory } from "@/api/categories";
+ 
 
 export default function TableComponentCategory() {
   const router = useRouter();
   const data = useSelector((state: RootState) => state.listCategories.rows);
-  useFetchCategories();
+
+  useFetchCategories(); 
+
 
   return (
     <div className="w-[80%] z-1">
@@ -62,6 +66,10 @@ export default function TableComponentCategory() {
                         marginLeft: "10%",
                       }}
                       disabled={item.access_key_id ? false : true}
+                      onClick={()=> {
+                        deleteCategory(item.id) 
+                        window.location.reload();
+                      }}
                     >
                       excluir
                     </Button>

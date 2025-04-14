@@ -23,15 +23,26 @@ export const getCategories = async (page: number) => {
 
 export const postCategory = async (category: CategoryPost) => {
   try {
-    const response = await axios.post(
-      `/api-proxy/categories`,
-     category,
-     {
+    const response = await axios.post(`/api-proxy/categories`, category, {
       headers: {
         "Access-Key": accessKey,
       },
-    }
-    );
+    });
+
+    return response;
+  } catch (error) {
+    console.log(error);
+    return error;
+  }
+};
+
+export const deleteCategory = async (id: number) => {
+  try {
+    const response = await axios.delete(`/api-proxy/categories/${id}`, {
+      headers: {
+        "Access-Key": accessKey,
+      },
+    });
 
     return response;
   } catch (error) {

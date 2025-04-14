@@ -14,7 +14,7 @@ export default function useFetchCategories() {
       dispatch(setError(""));
 
       try {
-        const response = await getCategories(page - 1);
+        const response = await getCategories((page - 1) * 5);
         console.log(response?.data);
         dispatch(setTotalPage(Math.ceil(response?.data.count / 5)));
         dispatch(

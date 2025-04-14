@@ -12,6 +12,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import { ButtonComponent } from "./ButtonComponent";
 import { useRouter } from "next/navigation";
+import PaginationCategoryComponent from "./PaginationCategoryComponent";
 
 export default function TableComponentCategory() {
   const router = useRouter();
@@ -19,11 +20,11 @@ export default function TableComponentCategory() {
   useFetchCategories(0);
 
   return (
-    <div className="w-[80%]">
-      <div className="w-[100%] flex justify-end mb-[2%]">
+    <div className="w-[80%] z-1">
+      <div className="w-[100%] flex justify-end mb-[2%] z-1">
         <ButtonComponent
           color="success"
-          className="w-[17%]"
+          className="w-[17%] z-1"
           onClick={() => router.push("/category/create")}
         >
           Cadastrar
@@ -51,7 +52,7 @@ export default function TableComponentCategory() {
                   <TableCell align="center">{item.id}</TableCell>
                   <TableCell align="center">{item.name}</TableCell>
                   <TableCell align="center">
-                    <Button variant="contained" color="primary" onClick={() => router.push(`/category/update/${item.id}`)}>
+                    <Button variant="contained" color="primary" onClick={() => router.push(`/category/update/${item.id}`)} disabled={item.access_key_id ? false : true}>
                       editar
                     </Button>
                     <Button
@@ -60,6 +61,7 @@ export default function TableComponentCategory() {
                       sx={{
                         marginLeft: "10%",
                       }}
+                      disabled={item.access_key_id ? false : true}
                     >
                       excluir
                     </Button>
@@ -74,6 +76,9 @@ export default function TableComponentCategory() {
           </TableBody>
         </Table>
       </TableContainer>
+      <div>
+      <PaginationCategoryComponent></PaginationCategoryComponent>
+      </div>
     </div>
   );
 }

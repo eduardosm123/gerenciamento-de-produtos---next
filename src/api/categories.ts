@@ -8,7 +8,7 @@ export const getCategories = async (page: number) => {
   try {
     // Chama o proxy local em vez da URL direta
     const response = await axios.get(
-      `/api-proxy/categories?offset=${page}&limit=10`,
+      `/api-proxy/categories?offset=${page}&limit=5`,
       {
         headers: {
           "Access-Key": accessKey,

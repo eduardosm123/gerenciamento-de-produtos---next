@@ -14,11 +14,11 @@ const theme = createTheme({
 export const ButtonComponent = ({
   children,
   color,
-  className
+  className, onClick
 }: IButtonComponent) => {
   return (
     <ThemeProvider theme={theme}>
-      <Button variant="contained" color={color ? color : "primary"} className={className ? className : ""}>
+      <Button variant="contained" color={color ? color : "primary"} className={className ? className : ""} onClick={onClick}>
         {children}
       </Button>
     </ThemeProvider>

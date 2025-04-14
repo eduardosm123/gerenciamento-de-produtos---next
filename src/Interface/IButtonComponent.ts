@@ -2,7 +2,7 @@
 import { OverridableStringUnion } from "@mui/types";
 import { ButtonPropsColorOverrides } from "@mui/material/Button";
 
-export interface IButtonComponent { children: React.ReactNode;color: OverridableStringUnion<
+export interface IButtonComponent { children: React.ReactNode; color: OverridableStringUnion<
     | "primary"
     | "secondary"
     | "success"
@@ -11,5 +11,5 @@ export interface IButtonComponent { children: React.ReactNode;color: Overridable
     | "info"
     | "warning",
     ButtonPropsColorOverrides
-  >,  className?: string
+  >,  className?: string, onClick?: () => void
 }

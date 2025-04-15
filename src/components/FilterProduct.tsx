@@ -46,7 +46,7 @@ export default function FilterProduct() {
               }}
             >
               <MenuItem value={"name"}><TextComponent color="black">Nome</TextComponent></MenuItem>
-              <MenuItem value={"category_id"}><TextComponent color="black">Nome</TextComponent></MenuItem>
+              <MenuItem value={"category_id"}><TextComponent color="black">Id da Categoria</TextComponent></MenuItem>
             </Select>
               <Button variant="contained" color="primary"
               

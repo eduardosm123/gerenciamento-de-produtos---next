@@ -14,7 +14,7 @@ export default function Product() {
             sm: "5%",
           },
           justifyContent: "center",
-          display: "flex",
+          display: "flex"
         }}
       >
         <TableComponentProduct></TableComponentProduct>

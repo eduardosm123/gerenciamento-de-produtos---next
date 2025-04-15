@@ -13,17 +13,17 @@ import { Grid} from "@mui/material";
 import TextComponent from "./TextComponent";
 
 export default function FormComponentCategoryCreate() {
-  const data = useSelector((state: RootState) => state.category.data.name);
+  const data = useSelector((state: RootState) => state.category.data);
   const error = useSelector((state: RootState) => state.fetch.error);
   const dispatch = useDispatch();
   const router = useRouter();
 
   function handleSubmit(e: FormEvent<HTMLButtonElement>) {
     e.preventDefault();
-
-    if (data && data.trim()) {
+    console.log(data)
+    if (data && data.name.trim()) {
       try {
-        postCategory({ name: data });
+        postCategory({ name: data.name });
         dispatch(clearCategory());
         router.push("/");
       } catch (err) {
@@ -47,8 +47,8 @@ export default function FormComponentCategoryCreate() {
          <TextField
           variant="standard"
           placeholder="Digite o nome da categoria"
-          value={data}
-          onChange={(e) => dispatch(setCategory(e.target.value))}
+          value={data ? data.name : ""}
+          onChange={(e) => dispatch(setCategory({ name: e.target.value}))}
           required
           sx={{
             width: {

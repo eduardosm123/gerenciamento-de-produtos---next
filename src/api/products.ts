@@ -3,11 +3,11 @@ import axios from "axios";
 
 const accessKey = process.env.NEXT_PUBLIC_API_KEY;
 
-export const getProduct = async (page: number, filter: string, filterValue: string) => {
+export const getProduct = async (page: number, filter: string, typeFilter: string) => {
   try {
-
+    console.log(`/api-proxy/products?${typeFilter}=${filter}&limit=5&offset=${page}`)
     const response = await axios.get(
-      `/api-proxy/products?${filter}=${filterValue}&limit=5&offset=${page}`,
+      `/api-proxy/products?${typeFilter}=${filter}&limit=5&offset=${page}`,
       {
         headers: {
           "Access-Key": accessKey,

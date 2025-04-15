@@ -9,7 +9,7 @@ export default function useFetchProducts() {
     const dispatch = useDispatch()
     const page = useSelector((state: RootState)=> state.listProducts.page)
     const filter = useSelector((state: RootState)=> state.listProducts.filter)
-    const filterValue = useSelector((state: RootState)=> state.listProducts.filterValue)
+    const typeFilter = useSelector((state: RootState)=> state.listProducts.typeFilter)
 
     useEffect(()=> {
         async function get() {
@@ -17,7 +17,7 @@ export default function useFetchProducts() {
             dispatch(setError(""))
 
             try {
-                const response = await getProduct((page - 1) * 5, filter, filterValue)
+                const response = await getProduct((page - 1) * 5, filter, typeFilter)
                 dispatch(setTotalPageProduct(Math.ceil(response?.data.count / 5)))
                 dispatch(setListProduct(
                     response && response.data && response?.data.rows ? response.data.rows : []
@@ -31,5 +31,5 @@ export default function useFetchProducts() {
         }   
 
         get()
-    }, [dispatch, page, filter, filterValue])
+    }, [dispatch, page, filter, typeFilter])
 }

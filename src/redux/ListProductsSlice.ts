@@ -5,8 +5,8 @@ const initialState: IListProduct = {
   rows: [],
   totalPages: 0,
   page: 1,
-  filter: "name",
-  filterValue: "",
+  filter: "",
+  typeFilter: "name",
 };
 
 export const listProductSlice = createSlice({
@@ -25,8 +25,8 @@ export const listProductSlice = createSlice({
     setFilter: (state, { payload }) => {
       state.filter = payload;
     },
-    setFilterValue: (state, { payload }) => {
-      state.filterValue = payload;
+    setTypeFilter: (state, { payload }) => {
+      state.typeFilter = payload;
     },
   },
 });
@@ -36,5 +36,5 @@ export const {
   setTotalPageProduct,
   setPageProduct,
   setFilter,
-  setFilterValue,
+  setTypeFilter,
 } = listProductSlice.actions;

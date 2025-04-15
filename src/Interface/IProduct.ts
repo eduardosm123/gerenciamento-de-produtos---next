@@ -13,6 +13,6 @@ export interface IListProduct {
   totalPages: number;
   page: number;
   filter: string;
-  filterValue: string;
+  typeFilter: string;
    
 }

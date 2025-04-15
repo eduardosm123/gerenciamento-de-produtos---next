@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { StoreProvider } from "../redux/StoreProvider";
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -24,16 +24,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <StoreProvider>
-      <html lang="en">
+    <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-       <AppRouterCacheProvider>
-       {children}
-       </AppRouterCacheProvider>
+        <StoreProvider>
+          <AppRouterCacheProvider options={{ enableCssLayer: true }}>
+            {children}
+          </AppRouterCacheProvider>
+        </StoreProvider>
       </body>
     </html>
-    </StoreProvider>
   );
 }

@@ -8,7 +8,7 @@ const initialState: IListCategory = {
 };
 
 export const listCategorySlice = createSlice({
-  name: "category",
+  name: "listCategory",
   initialState: initialState,
   reducers: {
     setList: (state, { payload }) => {

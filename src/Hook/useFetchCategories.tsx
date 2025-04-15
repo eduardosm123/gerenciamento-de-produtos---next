@@ -24,6 +24,7 @@ export default function useFetchCategories() {
               : []
           )
         );
+        dispatch(setLoading(false))
       } catch (error) {
         console.log(error);
       }

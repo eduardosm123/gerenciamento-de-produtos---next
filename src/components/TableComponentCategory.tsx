@@ -18,7 +18,7 @@ import TextComponent from "./TextComponent";
 export default function TableComponentCategory() {
   const router = useRouter();
   const data = useSelector((state: RootState) => state.listCategories.rows);
-
+  const loading = useSelector((state: RootState)=> state.fetch.loading)
   useFetchCategories();
 
   return (
@@ -48,7 +48,7 @@ export default function TableComponentCategory() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {data && data.length > 0 ? (
+            {!loading && data && data.length > 0 ? (
               data.map((item, key) => (
                 <TableRow key={key}>
                   <TableCell align="center">{item.id}</TableCell>

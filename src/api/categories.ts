@@ -1,4 +1,5 @@
 // Exemplo - NÃO recomendado se puder usar a Opção A
+import { ICategory } from "@/Interface/ICategory";
 import { CategoryPost } from "@/Types/Categories";
 import axios from "axios";
 
@@ -43,6 +44,41 @@ export const deleteCategory = async (id: number) => {
         "Access-Key": accessKey,
       },
     });
+
+    return response;
+  } catch (error) {
+    console.log(error);
+    return error;
+  }
+};
+
+export const getCategoryById = async (id: number) => {
+  try {
+    const response = await axios.get(`/api-proxy/categories/${id}`, {
+      headers: {
+        "Access-Key": accessKey,
+      },
+    });
+
+    return response;
+  } catch (error) {
+    console.log(error);
+    return error;
+  }
+};
+
+ 
+
+
+export const patchCategory = async (category: ICategory) => {
+  try {
+    const response = await axios.patch(`/api-proxy/categories/${category.data.id}`, { name: category.data.name}, {
+      headers: {
+        "Access-Key": accessKey,
+      },
+    });
+
+    console.log(response)
 
     return response;
   } catch (error) {

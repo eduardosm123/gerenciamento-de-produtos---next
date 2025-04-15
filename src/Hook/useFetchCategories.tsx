@@ -15,7 +15,7 @@ export default function useFetchCategories() {
 
       try {
         const response = await getCategories((page - 1) * 5);
-        console.log(response?.data);
+        //console.log(response?.data);
         dispatch(setTotalPage(Math.ceil(response?.data.count / 5)));
         dispatch(
           setList(
@@ -27,6 +27,7 @@ export default function useFetchCategories() {
         dispatch(setLoading(false))
       } catch (error) {
         console.log(error);
+        dispatch(setError("Erro: ocorreu um erro durante o processo de busca de categorias"))
       }
     }
 

@@ -1,6 +1,6 @@
 "use client";
 
-import FormComponentCategory from "@/components/FormComponentCategory";
+import FormComponentCategoryCreate from "@/components/FormComponentCategoryCreate";
 import { NavbarComponent } from "@/components/NavbarComponent";
 import TextComponent from "@/components/TextComponent";
 import { Grid } from "@mui/material";
@@ -56,7 +56,7 @@ export default function Page() {
               justifyContent: "center",
               alignItems: "center"
             }}>
-               <FormComponentCategory></FormComponentCategory>
+               <FormComponentCategoryCreate></FormComponentCategoryCreate>
             </Grid>
          
         </Grid>

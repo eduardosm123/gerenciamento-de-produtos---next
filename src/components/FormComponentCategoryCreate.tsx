@@ -11,8 +11,9 @@ import { postCategory } from "@/api/categories";
 import { setError } from "@/redux/fetchSlice";
 import { Grid} from "@mui/material";
 import TextComponent from "./TextComponent";
-export default function FormComponentCategory() {
-  const data = useSelector((state: RootState) => state.category.name);
+
+export default function FormComponentCategoryCreate() {
+  const data = useSelector((state: RootState) => state.category.data.name);
   const error = useSelector((state: RootState) => state.fetch.error);
   const dispatch = useDispatch();
   const router = useRouter();

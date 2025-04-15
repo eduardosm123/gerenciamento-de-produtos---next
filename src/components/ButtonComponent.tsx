@@ -18,7 +18,12 @@ export const ButtonComponent = ({
 }: IButtonComponent) => {
   return (
     <ThemeProvider theme={theme}>
-      <Button variant="contained" color={color ? color : "primary"} className={className ? className : ""} onClick={onClick}>
+      <Button variant="contained" color={color ? color : "primary"} className={className ? className : ""} sx={{
+        width: {
+          sm: "20%",
+          xs: "35%"
+        }
+      }} onClick={onClick}>
         {children}
       </Button>
     </ThemeProvider>

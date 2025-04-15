@@ -1,15 +1,17 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { Button, TextField } from "@mui/material";
+import { Button  } from "@mui/material";
 import TextComponent from "./TextComponent";
-
+import FilterProduct from "./FilterProduct";
+ 
 export default function TableComponentProduct() {
-    const router = useRouter();
+  const router = useRouter();
 
   return (
     <div className="w-[80%]">
-      <div className="w-[100%] flex justify-between mb-[2%]">
+      <div className="w-[100%] flex justify-between mb-[2%] items-center">
+        <FilterProduct></FilterProduct>
         <Button
           color="success"
           variant="contained"
@@ -18,15 +20,15 @@ export default function TableComponentProduct() {
               xs: "40%",
               sm: "20%",
             },
+            height: {
+              xs: "20%"
+            },
+            
           }}
           onClick={() => router.push("/product/create")}
         >
           <TextComponent>Cadastrar</TextComponent>
         </Button>
-        <section>
-            <TextField  variant="standard" placeholder="Digite o valor do filtro">Digite o valor do filtro</TextField>
-            
-        </section>
       </div>
     </div>
   );

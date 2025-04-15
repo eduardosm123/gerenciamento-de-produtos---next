@@ -16,19 +16,19 @@ export default function useFetchCategory(id: number) {
       dispatch(setLoading(true));
       dispatch(setError(""));
       try {
-        const response: CategoryApiResponse = await getCategoryById(id);
-
-        if (response && response.status === 200 && response.data) {
+        const response = await getCategoryById(id);
+        const categoryData = response as CategoryApiResponse;
+        if (categoryData && categoryData.status === 200 && categoryData.data) {
            
           const category: Category = {
-            id: response.data.id ? response.data.id : 0,
-            name: response.data.name ? response.data.name : "",
+            id: categoryData.data.id ? categoryData.data.id : 0,
+            name: categoryData.data.name ? categoryData.data.name : "",
           };
            
           dispatch(setCategory(category));
         }
 
-        return response;
+        return categoryData;
       } catch (error) {
         console.log(error);
         dispatch(

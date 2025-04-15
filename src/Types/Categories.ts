@@ -9,8 +9,17 @@ export type CategoryPost = {
   name: string
 }
 
+export interface CategoryApiResponse {
+  status: number,
+  data?: CategoryData;
+}
 
-export type CategoryPatch = {
-  id: number;
-  name: string;
+export interface CategoryData {
+  id?: number,
+  name?: string
+}
+
+export interface Category {
+  id: number,
+  name: string
 }

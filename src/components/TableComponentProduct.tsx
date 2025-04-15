@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { Button, Grid, TableContainer, TextField } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import TextComponent from "./TextComponent";
 
 export default function TableComponentProduct() {

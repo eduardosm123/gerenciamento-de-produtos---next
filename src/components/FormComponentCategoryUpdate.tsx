@@ -50,7 +50,7 @@ export default function FormComponentCategoryUpdate({ id }: { id: number }) {
         <TextField
           variant="standard"
           placeholder="Digite o nome da categoria"
-          value={data.name}
+          value={data ? data.name : ""}
           onChange={(e) => dispatch(setCategory({id: id, name: e.target.value}))}
           required
           sx={{

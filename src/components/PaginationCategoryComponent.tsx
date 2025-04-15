@@ -12,7 +12,7 @@ export default function PaginationCategoryComponent() {
   );
   const page = useSelector((state: RootState) => state.listCategories.page);
   const dispatch = useDispatch();
-
+   
   const handlePreviousPage = () => {
     if (page > 1) {
       dispatch(setPage(page - 1));
@@ -26,9 +26,9 @@ export default function PaginationCategoryComponent() {
   };
   return (
     <div className="flex justify-between mt-[2%]">
-      <Button variant="contained" onClick={(handlePreviousPage)}><TextComponent>Anterior</TextComponent></Button>
+      <Button variant="contained" onClick={(handlePreviousPage)} disabled={page === 1}><TextComponent>Anterior</TextComponent></Button>
       <p>{page ? page : ""} de {totalPage ? totalPage : ""} </p>
-      <Button variant="contained" onClick={handleNextPage}><TextComponent>Próximo</TextComponent></Button>
+      <Button variant="contained" onClick={handleNextPage} disabled={page === totalPage}><TextComponent>Próximo</TextComponent></Button>
     </div>
   );
 }

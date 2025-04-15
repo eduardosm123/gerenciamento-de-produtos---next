@@ -54,7 +54,7 @@ export default function FilterProduct() {
                 width: {
                     xs: "100%",
                     sm: "35%"
-                  }
+                  } 
               }}>Buscar</Button>
           </Grid>
     )

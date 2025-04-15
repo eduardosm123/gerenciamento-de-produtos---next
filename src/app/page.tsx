@@ -6,7 +6,7 @@ import TableComponentCategory from "@/components/TableComponentCategory";
 
 export default function Home() {
   return (
-    <NavbarComponent>
+    <NavbarComponent selected="category">
       <Grid sx={{
         paddingTop: {
           xs: "15%",

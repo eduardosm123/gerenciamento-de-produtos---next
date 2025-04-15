@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import {
   Button,
+  Grid,
   Paper,
   TableBody,
   TableCell,
@@ -16,6 +17,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import useFetchProducts from "@/Hook/useFetchProducts";
 import Table from "@mui/material/Table";
+import PaginationProductComponent from "./PaginationProductComponent";
 export default function TableComponentProduct() {
   const router = useRouter();
   const data = useSelector((state: RootState) => state.listProducts.rows);
@@ -123,7 +125,11 @@ export default function TableComponentProduct() {
             </TableBody>
           </Table>
         </TableContainer>
+       
       </div>
+      <Grid>
+          <PaginationProductComponent></PaginationProductComponent>
+        </Grid>
     </div>
   );
 }

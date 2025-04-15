@@ -17,7 +17,7 @@ export default function useFetchProducts() {
             dispatch(setError(""))
 
             try {
-                const response = await getProduct(page, filter, filterValue)
+                const response = await getProduct((page - 1) * 5, filter, filterValue)
                 dispatch(setTotalPageProduct(Math.ceil(response?.data.count / 5)))
                 dispatch(setListProduct(
                     response && response.data && response?.data.rows ? response.data.rows : []

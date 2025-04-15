@@ -6,7 +6,7 @@ import { Grid } from "@mui/material";
 
 export default function Product() {
   return (
-    <NavbarComponent>
+    <NavbarComponent selected="product">
       <Grid
         sx={{
           paddingTop: {

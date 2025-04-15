@@ -10,7 +10,7 @@ export default function Page() {
   const params = useParams();
 
   return (
-    <NavbarComponent>
+    <NavbarComponent selected="category">
       <Grid
         sx={{
           paddingTop: {

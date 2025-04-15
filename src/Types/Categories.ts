@@ -8,3 +8,9 @@ export type CategoryItemList = {
 export type CategoryPost = {
   name: string
 }
+
+
+export type CategoryPatch = {
+  id: number;
+  name: string;
+}

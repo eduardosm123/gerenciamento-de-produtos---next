@@ -1,7 +1,7 @@
 "use client";
 
 import useFetchCategories from "@/Hook/useFetchCategories";
-import { Button, TableContainer } from "@mui/material";
+import { Button, Grid, TableContainer } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -18,19 +18,25 @@ import TextComponent from "./TextComponent";
 export default function TableComponentCategory() {
   const router = useRouter();
   const data = useSelector((state: RootState) => state.listCategories.rows);
-  const loading = useSelector((state: RootState)=> state.fetch.loading)
+  const loading = useSelector((state: RootState) => state.fetch.loading);
   useFetchCategories();
 
   return (
-    <div className="w-[80%] z-1">
-      <div className="w-[100%] flex justify-end mb-[2%] z-1">
-         
-        <Button color="success" variant="contained" sx={
-          {width: {
-            xs: "40%",
-            sm: "20%"
+    <div className="w-[80%]">
+      <div className="w-[100%] flex justify-end mb-[2%]">
+        <Button
+          color="success"
+          variant="contained"
+          sx={{
+            width: {
+              xs: "40%",
+              sm: "20%",
+            },
           }}
-        } onClick={() => router.push("/category/create")}><TextComponent>Cadastrar</TextComponent></Button>
+          onClick={() => router.push("/category/create")}
+        >
+          <TextComponent>Cadastrar</TextComponent>
+        </Button>
       </div>
       <TableContainer component={Paper}>
         <Table aria-label="simple table">
@@ -62,29 +68,28 @@ export default function TableComponentCategory() {
                       sx={{
                         marginLeft: {
                           xs: "0%",
-                          sm: "10%"
+                          sm: "10%",
                         },
                         width: {
                           xs: "20%",
-                          sm: "30%"
-                        }
+                          sm: "30%",
+                        },
                       }}
                     >
-                       <TextComponent>Editar</TextComponent>
+                      <TextComponent>Editar</TextComponent>
                     </Button>
                     <Button
-
                       variant="contained"
                       color="error"
                       sx={{
                         marginLeft: {
                           xs: "0%",
-                          sm: "10%"
+                          sm: "10%",
                         },
                         width: {
                           xs: "20%",
-                          sm: "30%"
-                        }
+                          sm: "30%",
+                        },
                       }}
                       disabled={item.access_key_id ? false : true}
                       onClick={() => {
@@ -92,7 +97,7 @@ export default function TableComponentCategory() {
                         window.location.reload();
                       }}
                     >
-                     <TextComponent>Excluir</TextComponent>
+                      <TextComponent>Excluir</TextComponent>
                     </Button>
                   </TableCell>
                 </TableRow>
@@ -105,9 +110,10 @@ export default function TableComponentCategory() {
           </TableBody>
         </Table>
       </TableContainer>
-      <div>
+       
+      <Grid>
         <PaginationCategoryComponent></PaginationCategoryComponent>
-      </div>
+      </Grid>
     </div>
   );
 }

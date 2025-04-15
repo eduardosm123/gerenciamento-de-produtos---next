@@ -19,7 +19,7 @@ export const NavbarComponent = ({
         >
           <TextComponent>categorias</TextComponent>
         </ButtonComponent>
-        <ButtonComponent color="secondary" className="w-[17%] h-[65%] sm:w-[35%]">
+        <ButtonComponent  onClick={() => router.push("/product")} color="secondary" className="w-[17%] h-[65%] sm:w-[35%]">
           <TextComponent>produtos</TextComponent>
         </ButtonComponent>
       </AppBar>

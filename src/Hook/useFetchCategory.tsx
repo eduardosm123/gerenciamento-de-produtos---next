@@ -1,6 +1,7 @@
 import { getCategoryById } from "@/api/categories";
 import { setCategory } from "@/redux/categorySlice";
 import { setError, setLoading } from "@/redux/fetchSlice";
+import { Category, CategoryApiResponse } from "@/Types/Categories";
  
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
@@ -15,11 +16,11 @@ export default function useFetchCategory(id: number) {
       dispatch(setLoading(true));
       dispatch(setError(""));
       try {
-        const response: any = await getCategoryById(id);
+        const response: CategoryApiResponse = await getCategoryById(id);
 
         if (response && response.status === 200 && response.data) {
            
-          const category = {
+          const category: Category = {
             id: response.data.id ? response.data.id : 0,
             name: response.data.name ? response.data.name : "",
           };

@@ -78,7 +78,7 @@ export const patchCategory = async (category: ICategory) => {
       },
     });
 
-    console.log(response)
+    //console.log(response)
 
     return response;
   } catch (error) {

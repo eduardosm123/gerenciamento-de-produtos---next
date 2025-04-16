@@ -23,7 +23,7 @@ export default function Page() {
                <Grid
                  sx={{
                    width: {
-                     xs: "60%",
+                     xs: "75%",
                      sm: "40%",
                    },
                  }}
@@ -46,7 +46,7 @@ export default function Page() {
                      bgcolor: "#EEF8FF",
                      height: {
                        sm: "30.625rem",
-                       xs: "20rem"
+                       xs: "22rem"
                      },
                      display: "flex",
                      justifyContent: "center",

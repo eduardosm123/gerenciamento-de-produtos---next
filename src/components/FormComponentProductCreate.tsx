@@ -32,30 +32,29 @@ export default function FormComponentProductCreate() {
     e.preventDefault();
 
     //console.log(data);
-    
-    if (validationProductCreate({data: product})) {
-        console.log("teste")
-        try {
-             const response: unknown = await postProduct({
-                name: product.name,
-                description: product.description,
-                category_id: Number(product.category_id),
-                image_url: product.image_url,
-                price: product.price
-            }) 
-             
-            const productResponse = response as ProductApiResponse
-            if (productResponse && productResponse.status === 200) {
-                dispatch(clearProduct())
-                router.push("/product")
-            } else {
-                dispatch(setError("Erro: erro ao cadastrar produto"));
-            }
-        } catch (error) {
-            console.log(error)
-            dispatch(setError("Erro: erro ao cadastrar produto"));
+
+    if (validationProductCreate({ data: product })) {
+      console.log("teste");
+      try {
+        const response: unknown = await postProduct({
+          name: product.name,
+          description: product.description,
+          category_id: Number(product.category_id),
+          image_url: product.image_url,
+          price: product.price,
+        });
+
+        const productResponse = response as ProductApiResponse;
+        if (productResponse && productResponse.status === 200) {
+          dispatch(clearProduct());
+          router.push("/product");
+        } else {
+          dispatch(setError("Erro: erro ao cadastrar produto"));
         }
-        
+      } catch (error) {
+        console.log(error);
+        dispatch(setError("Erro: erro ao cadastrar produto"));
+      }
     } else {
       dispatch(setError("Erro: campo obrigatorio vazio"));
     }
@@ -84,18 +83,8 @@ export default function FormComponentProductCreate() {
               sm: "65%",
               xs: "95%",
             },
-          
-            paddingBottom: {
-              sm: "5%",
-            },
-          }}
-          InputProps={{
-            sx: {
-              fontSize: {
-                sm: "1.1rem",
-                xs: "0.9rem",
-              },
-            },
+
+            paddingBottom: "5%"
           }}
         />
         <TextField
@@ -112,9 +101,7 @@ export default function FormComponentProductCreate() {
               sm: "65%",
               xs: "95%",
             },
-            paddingBottom: {
-              sm: "5%",
-            },
+            paddingBottom:"5%"
           }}
           InputProps={{
             sx: {
@@ -132,16 +119,16 @@ export default function FormComponentProductCreate() {
           placeholder="Digite o preço do produto"
           value={product ? product.price : 0}
           type="number"
-          onChange={(e) => dispatch(setProduct({ price: Number(e.target.value) }))}
+          onChange={(e) =>
+            dispatch(setProduct({ price: Number(e.target.value) }))
+          }
           required
           sx={{
             width: {
               sm: "65%",
               xs: "95%",
             },
-            paddingBottom: {
-              sm: "5%",
-            },
+            paddingBottom: "5%"
           }}
           InputProps={{
             sx: {
@@ -165,9 +152,7 @@ export default function FormComponentProductCreate() {
               sm: "65%",
               xs: "95%",
             },
-            paddingBottom: {
-              sm: "5%",
-            },
+            paddingBottom: "5%"
           }}
           InputProps={{
             sx: {
@@ -181,19 +166,22 @@ export default function FormComponentProductCreate() {
         <Select
           variant="standard"
           label="Selecione a categoria"
-          value={product.category_id ? product.category_id : "Selecione a categoria"}
+          value={
+            product.category_id ? product.category_id : "Selecione a categoria"
+          }
           sx={{
             width: {
               sm: "65%",
               xs: "95%",
             },
+            paddingBottom:"5%"
           }}
           onChange={(e) => {
             dispatch(setProduct({ category_id: Number(e.target.value) }));
           }}
         >
           <MenuItem value="Selecione a categoria">
-            <TextComponent color="black">Selecione a categoria</TextComponent>
+            Selecione a categoria
           </MenuItem>
           {listCategories ? (
             listCategories.map((item, key) => (
@@ -214,15 +202,17 @@ export default function FormComponentProductCreate() {
       <Grid
         sx={{
           display: "flex",
-          width: "100%",
+          width: {
+            sm: "65%",
+            xs: "95%",
+          },
 
-          justifyContent: "space-around",
+          justifyContent: "space-between",
           paddingTop: {
             sm: "5%",
+            xs: "7%"
           },
-          paddingBottom: {
-            sm: "5%",
-          },
+          paddingBottom: "5%" 
         }}
       >
         <ButtonComponent

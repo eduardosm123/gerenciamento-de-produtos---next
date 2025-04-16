@@ -174,7 +174,7 @@ export default function FormComponentProductCreate() {
               sm: "65%",
               xs: "95%",
             },
-            paddingBottom:"5%"
+             
           }}
           onChange={(e) => {
             dispatch(setProduct({ category_id: Number(e.target.value) }));
@@ -186,7 +186,7 @@ export default function FormComponentProductCreate() {
           {listCategories ? (
             listCategories.map((item, key) => (
               <MenuItem key={key} value={item.id}>
-                <TextComponent color="black">{item.name}</TextComponent>
+                {item.name}
               </MenuItem>
             ))
           ) : (

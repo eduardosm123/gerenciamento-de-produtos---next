@@ -14,6 +14,7 @@ import { useRouter } from "next/navigation";
 import PaginationCategoryComponent from "./PaginationCategoryComponent";
 import { deleteCategory } from "@/api/categories";
 import TextComponent from "./TextComponent";
+import { CategoryApiResponse } from "@/Types/Categories";
 
 export default function TableComponentCategory() {
   const router = useRouter();
@@ -92,9 +93,14 @@ export default function TableComponentCategory() {
                         },
                       }}
                       disabled={item.access_key_id ? false : true}
-                      onClick={() => {
-                        deleteCategory(item.id);
-                        window.location.reload();
+                      onClick={async() => {
+                        const response: unknown = await deleteCategory(item.id);
+                        const categoryResponse = response as CategoryApiResponse
+
+                        if (categoryResponse && categoryResponse.status === 200) {
+                          window.location.reload();
+                        }
+                        
                       }}
                     >
                       <TextComponent>Excluir</TextComponent>

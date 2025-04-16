@@ -19,6 +19,7 @@ import useFetchProducts from "@/Hook/useFetchProducts";
 import Table from "@mui/material/Table";
 import PaginationProductComponent from "./PaginationProductComponent";
 import { deleteProduct } from "@/api/products";
+import { ProductApiResponse } from "@/Types/Products";
 export default function TableComponentProduct() {
   const router = useRouter();
   const data = useSelector((state: RootState) => state.listProducts.rows);
@@ -108,9 +109,12 @@ export default function TableComponentProduct() {
                           },
                         }}
                         disabled={item.access_key_id ? false : true}
-                        onClick={() => {
-                          deleteProduct(item.id);
-                          window.location.reload();
+                        onClick={async() => {
+                          const response: unknown = await deleteProduct(item.id);
+                          const productResponse = response as ProductApiResponse
+                          if (productResponse && productResponse.status === 200) {
+                            window.location.reload();
+                          }
                         }}
                       >
                         <TextComponent>Excluir</TextComponent>

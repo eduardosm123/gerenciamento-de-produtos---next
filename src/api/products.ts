@@ -46,7 +46,7 @@ export const deleteProduct = async (id: number) => {
         "Access-Key": accessKey,
       },
     });
-
+    console.log(response)
     return response;
   } catch (error) {
     console.log(error);

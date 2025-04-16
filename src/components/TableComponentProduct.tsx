@@ -18,6 +18,7 @@ import { RootState } from "@/redux/store";
 import useFetchProducts from "@/Hook/useFetchProducts";
 import Table from "@mui/material/Table";
 import PaginationProductComponent from "./PaginationProductComponent";
+import { deleteProduct } from "@/api/products";
 export default function TableComponentProduct() {
   const router = useRouter();
   const data = useSelector((state: RootState) => state.listProducts.rows);
@@ -28,25 +29,25 @@ export default function TableComponentProduct() {
   return (
     <div className="w-[80%]">
       <div className="w-[100%] flex justify-between mb-[2%] items-center flex-col">
-       <section className="w-[100%] flex justify-between mb-[2%] items-center">
-       <FilterProduct></FilterProduct>
-        <Button
-          color="success"
-          variant="contained"
-          sx={{
-            width: {
-              xs: "40%",
-              sm: "20%",
-            },
-            height: {
-              xs: "20%",
-            },
-          }}
-          onClick={() => router.push("/product/create")}
-        >
-          <TextComponent>Cadastrar</TextComponent>
-        </Button>
-       </section>
+        <section className="w-[100%] flex justify-between mb-[2%] items-center">
+          <FilterProduct></FilterProduct>
+          <Button
+            color="success"
+            variant="contained"
+            sx={{
+              width: {
+                xs: "40%",
+                sm: "20%",
+              },
+              height: {
+                xs: "20%",
+              },
+            }}
+            onClick={() => router.push("/product/create")}
+          >
+            <TextComponent>Cadastrar</TextComponent>
+          </Button>
+        </section>
         <TableContainer component={Paper}>
           <Table aria-label="simple table">
             <TableHead>
@@ -108,7 +109,7 @@ export default function TableComponentProduct() {
                         }}
                         disabled={item.access_key_id ? false : true}
                         onClick={() => {
-                          // deleteCategory(item.id);
+                          deleteProduct(item.id);
                           window.location.reload();
                         }}
                       >
@@ -125,11 +126,10 @@ export default function TableComponentProduct() {
             </TableBody>
           </Table>
         </TableContainer>
-       
       </div>
       <Grid>
-          <PaginationProductComponent></PaginationProductComponent>
-        </Grid>
+        <PaginationProductComponent></PaginationProductComponent>
+      </Grid>
     </div>
   );
 }

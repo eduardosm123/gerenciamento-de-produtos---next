@@ -20,3 +20,19 @@ export const getProduct = async (page: number, filter: string, typeFilter: strin
     console.log(error);
   }
 };
+
+
+export const deleteProduct = async (id: number) => {
+  try {
+    const response = await axios.delete(`/api-proxy/products/${id}`, {
+      headers: {
+        "Access-Key": accessKey,
+      },
+    });
+
+    return response;
+  } catch (error) {
+    console.log(error);
+    return error;
+  }
+};

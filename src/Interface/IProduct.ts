@@ -14,5 +14,16 @@ export interface IListProduct {
   page: number;
   filter: string;
   typeFilter: string;
-   
+}
+
+export interface IProduct {
+  data: {
+    id?: string;
+    name: string;
+    price: number;
+    description: string;
+    image_url: string;
+    category_id: string;
+    access_key_id?: string;
+  };
 }

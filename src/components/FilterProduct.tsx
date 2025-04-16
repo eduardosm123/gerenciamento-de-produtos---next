@@ -52,9 +52,6 @@ export default function FilterProduct() {
       </TextField>
       <Select
         variant="standard"
-        labelId="demo-simple-select-label"
-        id="demo-simple-select"
-        label="Age"
         value={data ? data.typeFilter : "name"}
         onChange={(e)=> {
           dispatch(setTypeFilter(e.target.value))

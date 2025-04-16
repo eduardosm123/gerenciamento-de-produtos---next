@@ -1,6 +1,6 @@
 "use client";
 
-import useFetchCategories from "@/Hook/useFetchCategories";
+import useFetchCategories from "@/Hook/useFetchCategoriesPagination";
 import { Button, Grid, TableContainer } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";

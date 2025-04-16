@@ -1,13 +1,11 @@
- 
 import { ICategory } from "@/Interface/ICategory";
 import { CategoryPost } from "@/Types/Categories";
 import axios from "axios";
 
 const accessKey = process.env.NEXT_PUBLIC_API_KEY;
 
-export const getCategories = async (page: number) => {
+export const getCategoriesPagination = async (page: number) => {
   try {
- 
     const response = await axios.get(
       `/api-proxy/categories?offset=${page}&limit=5`,
       {
@@ -16,6 +14,20 @@ export const getCategories = async (page: number) => {
         },
       }
     );
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getCategories = async () => {
+  try {
+    const response = await axios.get(`/api-proxy/categories`, {
+      headers: {
+        "Access-Key": accessKey,
+      },
+    });
+
     return response;
   } catch (error) {
     console.log(error);
@@ -67,16 +79,17 @@ export const getCategoryById = async (id: number) => {
   }
 };
 
- 
-
-
 export const patchCategory = async (category: ICategory) => {
   try {
-    const response = await axios.patch(`/api-proxy/categories/${category.data.id}`, { name: category.data.name}, {
-      headers: {
-        "Access-Key": accessKey,
-      },
-    });
+    const response = await axios.patch(
+      `/api-proxy/categories/${category.data.id}`,
+      { name: category.data.name },
+      {
+        headers: {
+          "Access-Key": accessKey,
+        },
+      }
+    );
 
     //console.log(response)
 

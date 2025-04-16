@@ -20,7 +20,7 @@ export default function FormComponentCategoryCreate() {
 
   function handleSubmit(e: FormEvent<HTMLButtonElement>) {
     e.preventDefault();
-    console.log(data)
+    
     if (data && data.name.trim()) {
       try {
         postCategory({ name: data.name });

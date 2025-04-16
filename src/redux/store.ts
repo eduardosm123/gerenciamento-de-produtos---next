@@ -3,6 +3,7 @@ import { categorySlice } from "./categorySlice";
 import { listCategorySlice } from "./ListCategorySlice";
 import { fetchSlice } from "./fetchSlice";
 import { listProductSlice } from "./ListProductsSlice";
+import { productSlice } from "./productSlice";
 import {
   persistStore,
   persistReducer,
@@ -18,14 +19,15 @@ import storage from "redux-persist/lib/storage";
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["category", "listCategory", "fetch", "listProduct"],
+  whitelist: ["category", "listCategory", "fetch", "listProduct", "product"],
 };
 
 const rootReducer = combineReducers({
   category: categorySlice.reducer,
   listCategories: listCategorySlice.reducer,
   fetch: fetchSlice.reducer,
-  listProducts: listProductSlice.reducer
+  listProducts: listProductSlice.reducer,
+  product: productSlice.reducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

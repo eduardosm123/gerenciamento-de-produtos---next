@@ -1,8 +1,9 @@
 "use client";
 
 import FormComponentCategoryCreate from "@/components/FormComponentCategoryCreate";
+import FormTitle from "@/components/FormTitle";
 import { NavbarComponent } from "@/components/NavbarComponent";
-import TextComponent from "@/components/TextComponent";
+ 
 import { Grid } from "@mui/material";
 
 export default function Page() {
@@ -39,15 +40,10 @@ export default function Page() {
               fontWeight: "bold",
             }}
           >
-            <TextComponent>
-              <span className="text-white">
-                Formulário de cadastro de categorias
-              </span>
-            </TextComponent>
+            <FormTitle>Formulário de cadastro de categorias</FormTitle>
           </Grid>
             <Grid sx={{
               bgcolor: "#EEF8FF",
-               
               height: {
                 sm: "30.625rem",
                 xs: "20rem"

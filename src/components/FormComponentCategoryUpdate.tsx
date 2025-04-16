@@ -16,7 +16,7 @@ import useFetchCategory from "@/Hook/useFetchCategory";
 export default function FormComponentCategoryUpdate({ id }: { id: number }) {
   const data = useSelector((state: RootState) => state.category.data);
   const error = useSelector((state: RootState) => state.fetch.error);
-
+  const loading = useSelector((state: RootState)=> state.fetch.loading)
   useFetchCategory(id)
   const dispatch = useDispatch();
   const router = useRouter();
@@ -40,7 +40,9 @@ export default function FormComponentCategoryUpdate({ id }: { id: number }) {
 
   return (
     <form className="flex flex-col w-[100%] items-center">
-      <Grid
+      { !loading && data ? <><p>Carregando</p></> : <>
+      
+        <Grid
         sx={{
           width: "100%",
           display: "flex",
@@ -111,6 +113,7 @@ export default function FormComponentCategoryUpdate({ id }: { id: number }) {
       ) : (
         <></>
       )}
+      </>}
     </form>
   );
 }

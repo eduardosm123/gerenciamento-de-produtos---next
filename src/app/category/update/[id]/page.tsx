@@ -1,8 +1,9 @@
 "use client";
 
 import FormComponentCategoryUpdate from "@/components/FormComponentCategoryUpdate";
+import FormTitle from "@/components/FormTitle";
 import { NavbarComponent } from "@/components/NavbarComponent";
-import TextComponent from "@/components/TextComponent";
+
 import { Grid } from "@mui/material";
 import { useParams } from "next/navigation";
 
@@ -42,16 +43,11 @@ export default function Page() {
               fontWeight: "bold",
             }}
           >
-            <TextComponent>
-              <span className="text-white">
-                Formulário de cadastro de categorias
-              </span>
-            </TextComponent>
+            <FormTitle>Formulário de edição de categorias</FormTitle>
           </Grid>
           <Grid
             sx={{
               bgcolor: "#EEF8FF",
-
               height: {
                 sm: "30.625rem",
                 xs: "20rem",
@@ -61,7 +57,9 @@ export default function Page() {
               alignItems: "center",
             }}
           >
-            <FormComponentCategoryUpdate id={Number(params.id)}></FormComponentCategoryUpdate>
+            <FormComponentCategoryUpdate
+              id={Number(params.id)}
+            ></FormComponentCategoryUpdate>
           </Grid>
         </Grid>
       </Grid>

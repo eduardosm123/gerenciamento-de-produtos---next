@@ -30,6 +30,7 @@ export default function FormComponentCategoryUpdate({ id }: { id: number }) {
         id, name: data.name
       }})
 
+      dispatch(clearCategory())
       router.push("/")
     } catch (error) {
       console.log(error)

@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { ButtonComponent } from "./ButtonComponent";
 import { useRouter } from "next/navigation";
 import { clearCategory, setCategory } from "@/redux/categorySlice";
-import { FormEvent } from "react";
+import { FormEvent, useEffect } from "react";
 import { postCategory } from "@/api/categories";
 import { setError } from "@/redux/fetchSlice";
 import { Grid} from "@mui/material";
@@ -17,6 +17,10 @@ export default function FormComponentCategoryCreate() {
   const error = useSelector((state: RootState) => state.fetch.error);
   const dispatch = useDispatch();
   const router = useRouter();
+
+  useEffect(()=> {
+    dispatch(clearCategory())
+  }, [dispatch])
 
   function handleSubmit(e: FormEvent<HTMLButtonElement>) {
     e.preventDefault();

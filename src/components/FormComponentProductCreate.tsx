@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import { useRouter } from "next/navigation";
 import useFetchCategories from "@/Hook/useFetchCategories";
-import { FormEvent } from "react";
+import { FormEvent, useEffect } from "react";
 import { setError } from "@/redux/fetchSlice";
 import { postProduct } from "@/api/products";
 import {
@@ -18,12 +18,18 @@ import TextComponent from "./TextComponent";
 import { ButtonComponent } from "./ButtonComponent";
 import { validationProductCreate } from "@/validations/productCreate";
 import { ProductApiResponse } from "@/Types/Products";
+ 
 
 export default function FormComponentProductCreate() {
   const product = useSelector((state: RootState) => state.product.data);
   const error = useSelector((state: RootState) => state.fetch.error);
   const dispatch = useDispatch();
   const router = useRouter();
+
+  useEffect(()=> {
+    dispatch(clearProduct())
+  }, [dispatch])
+  
   const listCategories = useSelector(
     (state: RootState) => state.listCategories.rows
   );

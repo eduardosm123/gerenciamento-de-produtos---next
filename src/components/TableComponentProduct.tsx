@@ -75,11 +75,11 @@ export default function TableComponentProduct() {
                     <TableCell align="center">{item.name}</TableCell>
                     <TableCell align="center">{item.description}</TableCell>
                     <TableCell align="center">
-                      <Button
+                    <Button
                         variant="contained"
                         color="primary"
                         onClick={() =>
-                          router.push(`/category/update/${item.id}`)
+                          router.push(`/product/read/${item.id}`)
                         }
                         disabled={item.access_key_id ? false : true}
                         sx={{
@@ -88,8 +88,29 @@ export default function TableComponentProduct() {
                             sm: "10%",
                           },
                           width: {
-                            xs: "20%",
-                            sm: "30%",
+                            xs: "15%",
+                            sm: "20%",
+                          },
+                          backgroundColor:  "#6DDEC9"
+                        }}
+                      >
+                        <TextComponent>detalhes</TextComponent>
+                      </Button>
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={() =>
+                          router.push(`/product/update/${item.id}`)
+                        }
+                        disabled={item.access_key_id ? false : true}
+                        sx={{
+                          marginLeft: {
+                            xs: "0%",
+                            sm: "10%",
+                          },
+                          width: {
+                            xs: "15%",
+                            sm: "20%",
                           },
                         }}
                       >
@@ -104,8 +125,8 @@ export default function TableComponentProduct() {
                             sm: "10%",
                           },
                           width: {
-                            xs: "20%",
-                            sm: "30%",
+                            xs: "15%",
+                            sm: "20%",
                           },
                         }}
                         disabled={item.access_key_id ? false : true}

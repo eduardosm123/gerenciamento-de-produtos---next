@@ -18,6 +18,7 @@ import TextComponent from "./TextComponent";
 import { ButtonComponent } from "./ButtonComponent";
 import { validationProductCreate } from "@/validations/productCreate";
 import { ProductApiResponse } from "@/Types/Products";
+
 export default function FormComponentProductCreate() {
   const product = useSelector((state: RootState) => state.product.data);
   const error = useSelector((state: RootState) => state.fetch.error);

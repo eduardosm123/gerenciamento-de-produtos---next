@@ -106,7 +106,7 @@ export default function FormComponentProductRead({
               variant="contained"
               onClick={() => {
                 dispatch(clearProduct());
-                router.push("/product");
+                router.push(`/product/update/${id}/${category_id}`);
               }}
             >
               <TextComponent>Editar</TextComponent>

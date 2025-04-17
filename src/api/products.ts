@@ -69,4 +69,23 @@ export const getProductById = async (id: number) => {
   }
 };
 
- 
+ export const patchProduct = async (id: number, name: string) => {
+
+  try {
+    const response = await axios.patch(
+      `/api-proxy/products/${id}`,
+      { name: name },
+      {
+        headers: {
+          "Access-Key": accessKey,
+        },
+      }
+    );
+
+    return response
+  } catch (error) {
+    console.log(error);
+    return error;
+  }
+
+ }

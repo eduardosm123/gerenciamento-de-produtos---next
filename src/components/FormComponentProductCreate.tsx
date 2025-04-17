@@ -18,7 +18,6 @@ import TextComponent from "./TextComponent";
 import { ButtonComponent } from "./ButtonComponent";
 import { validationProductCreate } from "@/validations/productCreate";
 import { ProductApiResponse } from "@/Types/Products";
- 
 
 export default function FormComponentProductCreate() {
   const product = useSelector((state: RootState) => state.product.data);
@@ -26,10 +25,10 @@ export default function FormComponentProductCreate() {
   const dispatch = useDispatch();
   const router = useRouter();
 
-  useEffect(()=> {
-    dispatch(clearProduct())
-  }, [dispatch])
-  
+  useEffect(() => {
+    dispatch(clearProduct());
+  }, [dispatch]);
+
   const listCategories = useSelector(
     (state: RootState) => state.listCategories.rows
   );
@@ -38,10 +37,7 @@ export default function FormComponentProductCreate() {
   async function handleSubmit(e: FormEvent<HTMLButtonElement>) {
     e.preventDefault();
 
-    //console.log(data);
-
     if (validationProductCreate({ data: product })) {
-      console.log("teste");
       try {
         const response: unknown = await postProduct({
           name: product.name,
@@ -55,6 +51,8 @@ export default function FormComponentProductCreate() {
         if (productResponse && productResponse.status === 200) {
           dispatch(clearProduct());
           router.push("/product");
+        } else if (productResponse && productResponse.status === 400) {
+          dispatch(setError("Erro: produto com o nome igual"));
         } else {
           dispatch(setError("Erro: erro ao cadastrar produto"));
         }
@@ -91,7 +89,7 @@ export default function FormComponentProductCreate() {
               xs: "95%",
             },
 
-            paddingBottom: "5%"
+            paddingBottom: "5%",
           }}
         />
         <TextField
@@ -108,7 +106,7 @@ export default function FormComponentProductCreate() {
               sm: "65%",
               xs: "95%",
             },
-            paddingBottom:"5%"
+            paddingBottom: "5%",
           }}
           InputProps={{
             sx: {
@@ -135,7 +133,7 @@ export default function FormComponentProductCreate() {
               sm: "65%",
               xs: "95%",
             },
-            paddingBottom: "5%"
+            paddingBottom: "5%",
           }}
           InputProps={{
             sx: {
@@ -159,7 +157,7 @@ export default function FormComponentProductCreate() {
               sm: "65%",
               xs: "95%",
             },
-            paddingBottom: "5%"
+            paddingBottom: "5%",
           }}
           InputProps={{
             sx: {
@@ -181,7 +179,6 @@ export default function FormComponentProductCreate() {
               sm: "65%",
               xs: "95%",
             },
-             
           }}
           onChange={(e) => {
             dispatch(setProduct({ category_id: Number(e.target.value) }));
@@ -193,7 +190,7 @@ export default function FormComponentProductCreate() {
           {listCategories ? (
             listCategories.map((item, key) => (
               <MenuItem key={key} value={item.id}>
-                {item.name}  
+                {item.name}
               </MenuItem>
             ))
           ) : (
@@ -217,9 +214,9 @@ export default function FormComponentProductCreate() {
           justifyContent: "space-between",
           paddingTop: {
             sm: "5%",
-            xs: "7%"
+            xs: "7%",
           },
-          paddingBottom: "5%" 
+          paddingBottom: "5%",
         }}
       >
         <ButtonComponent

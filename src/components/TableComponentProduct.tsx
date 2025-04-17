@@ -13,9 +13,9 @@ import {
 } from "@mui/material";
 import TextComponent from "./TextComponent";
 import FilterProduct from "./FilterProduct";
-import {  useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
- 
+
 import Table from "@mui/material/Table";
 import PaginationProductComponent from "./PaginationProductComponent";
 import { deleteProduct } from "@/api/products";
@@ -24,19 +24,16 @@ import useFetchProducts from "@/Hook/useFetchProducts";
 import { useEffect } from "react";
 import { setImageError } from "@/redux/productSlice";
 
- 
-
 export default function TableComponentProduct() {
   const router = useRouter();
   const data = useSelector((state: RootState) => state.listProducts.rows);
   const loading = useSelector((state: RootState) => state.fetch.loading);
-  const dispatch = useDispatch()
-  useFetchProducts()
-  
-  
-  useEffect(()=> {
-    dispatch(setImageError(false))
-  }, [dispatch])
+  const dispatch = useDispatch();
+  useFetchProducts();
+
+  useEffect(() => {
+    dispatch(setImageError(false));
+  }, [dispatch]);
 
   return (
     <div className="w-[80%]">
@@ -112,7 +109,9 @@ export default function TableComponentProduct() {
                         variant="contained"
                         color="primary"
                         onClick={() =>
-                          router.push(`/product/update/${item.id}`)
+                          router.push(
+                            `/product/update/${item.id}/${item.category_id}`
+                          )
                         }
                         disabled={item.access_key_id ? false : true}
                         sx={{

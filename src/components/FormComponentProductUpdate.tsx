@@ -70,7 +70,7 @@ export default function FormComponentProductUpdate({
   }
   return (
     <form className="flex flex-col w-[100%] items-center">
-      {!loading && !product && !categoryProduct ? (
+      {loading ? (
         <>
           <p>Carregando</p>
         </>

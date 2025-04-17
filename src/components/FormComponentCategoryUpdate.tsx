@@ -60,7 +60,7 @@ export default function FormComponentCategoryUpdate({ id }: { id: number }) {
 
   return (
     <form className="flex flex-col w-[100%] items-center">
-      {!loading && data ? (
+      {loading ? (
         <>
           <p>Carregando</p>
         </>

@@ -34,6 +34,7 @@ export default function useFetchProduct(id: number) {
           };
 
           dispatch(setProduct(product));
+          dispatch(setLoading(false));
         }
 
         return productData;
@@ -44,6 +45,7 @@ export default function useFetchProduct(id: number) {
             "Erro: Ocorreu um erro durante a busca de informações do produto"
           )
         );
+        dispatch(setLoading(false));
       }
     }
 

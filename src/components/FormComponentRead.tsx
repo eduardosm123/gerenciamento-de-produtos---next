@@ -36,7 +36,7 @@ export default function FormComponentProductRead({
 
   return (
     <div className="flex flex-col w-[100%] items-center">
-      {!loading && data ? (
+      {loading ? (
         <>
           <p>Carregando</p>
         </>

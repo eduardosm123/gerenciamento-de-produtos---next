@@ -24,7 +24,7 @@ export default function useFetchCategory(id: number) {
            
           dispatch(setCategory(category));
         }
-
+        dispatch(setLoading(false));
         return categoryData;
       } catch (error) {
         console.log(error);
@@ -34,6 +34,7 @@ export default function useFetchCategory(id: number) {
               id
           )
         );
+        dispatch(setLoading(false));
       }
     }
 

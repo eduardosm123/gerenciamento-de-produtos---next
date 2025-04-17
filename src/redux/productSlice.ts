@@ -11,6 +11,7 @@ const initialState: IProduct = {
     price: 0,
     access_key_id: "",
   },
+  imageError: false
 };
 
 export const productSlice = createSlice({
@@ -33,9 +34,13 @@ export const productSlice = createSlice({
         price: 0,
         access_key_id: "",
       };
+      state.imageError = false
     },
+    setImageError: (state, {payload})=> {
+      state.imageError = payload
+    }
   },
 });
 
 
-export const { setProduct, clearProduct} = productSlice.actions;
+export const { setProduct, clearProduct, setImageError} = productSlice.actions;

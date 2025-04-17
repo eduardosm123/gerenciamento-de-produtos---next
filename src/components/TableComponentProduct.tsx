@@ -13,19 +13,30 @@ import {
 } from "@mui/material";
 import TextComponent from "./TextComponent";
 import FilterProduct from "./FilterProduct";
-import { useSelector } from "react-redux";
+import {  useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
-import useFetchProducts from "@/Hook/useFetchProducts";
+ 
 import Table from "@mui/material/Table";
 import PaginationProductComponent from "./PaginationProductComponent";
 import { deleteProduct } from "@/api/products";
 import { ProductApiResponse } from "@/Types/Products";
+import useFetchProducts from "@/Hook/useFetchProducts";
+import { useEffect } from "react";
+import { setImageError } from "@/redux/productSlice";
+
+ 
+
 export default function TableComponentProduct() {
   const router = useRouter();
   const data = useSelector((state: RootState) => state.listProducts.rows);
   const loading = useSelector((state: RootState) => state.fetch.loading);
-
-  useFetchProducts();
+  const dispatch = useDispatch()
+  useFetchProducts()
+  
+  
+  useEffect(()=> {
+    dispatch(setImageError(false))
+  }, [dispatch])
 
   return (
     <div className="w-[80%]">
@@ -75,13 +86,14 @@ export default function TableComponentProduct() {
                     <TableCell align="center">{item.name}</TableCell>
                     <TableCell align="center">{item.description}</TableCell>
                     <TableCell align="center">
-                    <Button
+                      <Button
                         variant="contained"
                         color="primary"
                         onClick={() =>
-                          router.push(`/product/read/${item.id}`)
+                          router.push(
+                            `/product/read/${item.id}/${item.category_id}`
+                          )
                         }
-                        disabled={item.access_key_id ? false : true}
                         sx={{
                           marginLeft: {
                             xs: "0%",
@@ -89,9 +101,9 @@ export default function TableComponentProduct() {
                           },
                           width: {
                             xs: "15%",
-                            sm: "20%",
+                            sm: "25%",
                           },
-                          backgroundColor:  "#6DDEC9"
+                          backgroundColor: "#6DDEC9",
                         }}
                       >
                         <TextComponent>detalhes</TextComponent>
@@ -130,10 +142,16 @@ export default function TableComponentProduct() {
                           },
                         }}
                         disabled={item.access_key_id ? false : true}
-                        onClick={async() => {
-                          const response: unknown = await deleteProduct(item.id);
-                          const productResponse = response as ProductApiResponse
-                          if (productResponse && productResponse.status === 200) {
+                        onClick={async () => {
+                          const response: unknown = await deleteProduct(
+                            item.id
+                          );
+                          const productResponse =
+                            response as ProductApiResponse;
+                          if (
+                            productResponse &&
+                            productResponse.status === 200
+                          ) {
                             window.location.reload();
                           }
                         }}

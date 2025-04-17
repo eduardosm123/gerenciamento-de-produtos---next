@@ -187,7 +187,7 @@ export default function FormComponentProductCreate() {
           {listCategories ? (
             listCategories.map((item, key) => (
               <MenuItem key={key} value={item.id}>
-                {item.name}
+                {item.name}  
               </MenuItem>
             ))
           ) : (

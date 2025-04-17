@@ -13,7 +13,9 @@ export default function TextComponent({
           xs: "0.7rem",
           sm: "1rem",
         },
-        color: color
+        color: color,
+        textWrap: "wrap",
+      
       }}
     >
       {children}

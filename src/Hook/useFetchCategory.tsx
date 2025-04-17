@@ -30,7 +30,7 @@ export default function useFetchCategory(id: number) {
         console.log(error);
         dispatch(
           setError(
-            "Error: Ocorreu um erro durante o processo de pegar os dados da categoria de id" +
+            "Error: Ocorreu um erro durante o processo de obter os dados da categoria de id" +
               id
           )
         );

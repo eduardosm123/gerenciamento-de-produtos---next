@@ -8,19 +8,26 @@ import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import { useRouter } from "next/navigation";
 import PaginationCategoryComponent from "./PaginationCategoryComponent";
 import { deleteCategory } from "@/api/categories";
 import TextComponent from "./TextComponent";
 import { CategoryApiResponse } from "@/Types/Categories";
+import { useEffect } from "react";
+import { setImageError } from "@/redux/productSlice";
 
 export default function TableComponentCategory() {
   const router = useRouter();
   const data = useSelector((state: RootState) => state.listCategories.rows);
   const loading = useSelector((state: RootState) => state.fetch.loading);
+  const dispatch = useDispatch();
   useFetchCategories();
+
+  useEffect(() => {
+    dispatch(setImageError(false));
+  }, [dispatch]);
 
   return (
     <div className="w-[80%]">
@@ -93,14 +100,17 @@ export default function TableComponentCategory() {
                         },
                       }}
                       disabled={item.access_key_id ? false : true}
-                      onClick={async() => {
+                      onClick={async () => {
                         const response: unknown = await deleteCategory(item.id);
-                        const categoryResponse = response as CategoryApiResponse
+                        const categoryResponse =
+                          response as CategoryApiResponse;
 
-                        if (categoryResponse && categoryResponse.status === 200) {
+                        if (
+                          categoryResponse &&
+                          categoryResponse.status === 200
+                        ) {
                           window.location.reload();
                         }
-                        
                       }}
                     >
                       <TextComponent>Excluir</TextComponent>
@@ -116,7 +126,7 @@ export default function TableComponentCategory() {
           </TableBody>
         </Table>
       </TableContainer>
-       
+
       <Grid>
         <PaginationCategoryComponent></PaginationCategoryComponent>
       </Grid>

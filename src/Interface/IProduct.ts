@@ -26,4 +26,5 @@ export interface IProduct {
     category_id: string;
     access_key_id?: string;
   };
+  imageError?: boolean
 }
